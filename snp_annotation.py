@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 #Configure logging to log into a file
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-fh = logging.FileHandler('3043418.log')
+fh = logging.FileHandler('annotation.log')
 fh.setFormatter(logging.Formatter('%(levelname)s - %(asctime)s - %(message)s'))
 logger.addHandler(fh)
 
@@ -219,7 +219,7 @@ class SNPAnnotation:
         try:
             genome_sequence = self.load_fasta()
             gff_db = self.create_gff_db()
-            output_file = "3043418_assesment.tsv"
+            output_file = "snp_annotation.tsv"
             self.process_vcf(output_file, gff_db, genome_sequence)
             self.create_bar_plot(output_file)
         except Exception as e:
