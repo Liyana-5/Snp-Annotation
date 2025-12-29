@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+
+#Pdf files
+*.pdf
+# Docker
+*.log
+
+# Data (do not push large files)
+Genome_files/
+Toy_Data/
+Assessment*/
+
+# Outputs
+*.tsv
+*.png
