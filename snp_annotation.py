@@ -126,24 +126,18 @@ class SNPAnnotation:
                         strand """
                         if parent.strand == "+":
                             for child in self.gff_db.children(parent.id, featuretype="CDS", order_by="start"):
-                                phase = child.frame
+                                
                                 start = child.start
                                 end = child.end
-                                if phase == 1:
-                                    start +=1
-                                elif phase == 2:
-                                    start +=2
+                                
                                 coding_seq += genome_sequence[child.seqid][start-1:end] # -1 used to account for 0 based indexing
                                 coding_regions.append((start, end))
                         else:
                             for child in self.gff_db.children(parent.id, featuretype="CDS", order_by="start", reverse=True):
-                                phase = child.frame
+        
                                 start = child.start
                                 end = child.end
-                                if phase == 1:
-                                    start -=1
-                                elif phase == 2:
-                                    start -=2
+                                
                                 coding_seq += genome_sequence[child.seqid][start-1:end]
                                 coding_regions.append((start, end))
                             coding_seq = Seq(coding_seq).reverse_complement()
