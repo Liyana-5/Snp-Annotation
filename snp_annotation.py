@@ -120,10 +120,7 @@ class SNPAnnotation:
                         # Build complete coding sequence by adjusting the frame of cds and store start and end in a dict
                         coding_seq = ""
                         coding_regions = [] # Container to hold start and end positions of a coding segment
-                        """" the frame determines the start of translation in a coding sequence the if frame = 0
-                        the translation starts at first nuclotide of CDS if 1 at second nucleotid and if 2 at 3 rd
-                        so start is adjusted according to frame information from gff file for both negative and positive
-                        strand """
+                        # Since the strand of the transcript can be positive or negative we need to adjust the frame of the logic to build the coding sequence accordingly.
                         if parent.strand == "+":
                             for child in self.gff_db.children(parent.id, featuretype="CDS", order_by="start"):
                                 
